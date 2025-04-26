@@ -1,0 +1,69 @@
+travel/                     # Nom du projet (racine)
+│
+├── travel/                 # Répertoire principal du projet Django
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py         # Configuration globale (base de données, apps, middleware...)
+│   ├── urls.py             # URLs globales
+│   ├── wsgi.py
+│
+├── core/                   # App principale (page d'accueil, contact, à propos)
+│   ├── migrations/
+│   ├── templates/core/     # Templates liés à core (base.html, home.html, etc.)
+│   ├── static/core/        # Fichiers statiques liés à core (CSS, images)
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│
+├── users/                  # Gestion des utilisateurs (inscription, login, profils)
+│   ├── migrations/
+│   ├── templates/users/    # Templates liés aux utilisateurs (register.html, login.html, profile.html)
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── forms.py            # Formulaires utilisateurs (Login, Register, etc.)
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│
+├── reservations/           # Réservations (hôtels, voitures, restaurants)
+│   ├── migrations/
+│   ├── templates/reservations/
+│   ├── static/reservations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py           # Modèles : Hotel, Riad, Appartement, Voiture, Restaurant
+│   ├── forms.py            # Formulaires de réservation
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│
+├── recommender/            # Système de recommandation (machine learning plus tard)
+│   ├── __init__.py
+│   ├── recommender.py      # Fichier pour la logique de recommandation
+│
+├── chatbot/                # Chatbot (simple dans cette version)
+│   ├── __init__.py
+│   ├── chatbot.py          # Fichier pour la logique du chatbot
+│
+├── templates/              # Dossier global pour les templates
+│   ├── base.html           # Template de base pour toutes les pages
+│
+├── static/                 # Dossier global pour les fichiers statiques
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│
+├── media/                  # Fichiers uploadés par les utilisateurs (images, etc.)
+│
+├── manage.py               # Fichier principal pour exécuter Django
+│
+├── requirements.txt        # Liste des dépendances (Django, etc.)
+│
+└── README.md               # Documentation du projet

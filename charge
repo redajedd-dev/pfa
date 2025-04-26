@@ -1,0 +1,92 @@
+voila le 📘 Cahier des Charges – Plateforme Touristique Intelligente
+1. Contexte & Objectif
+Le tourisme est un pilier essentiel de l’économie marocaine. Le projet vise à créer une plateforme web innovante qui facilite la réservation d’hébergements, de voitures, de restaurants et d’activités au Maroc, tout en proposant un système de recommandation intelligent et un chatbot conversationnel pour guider les utilisateurs.
+
+2. Objectifs Fonctionnels
+Permettre la recherche et réservation de :
+
+🏨 Hôtels / Riads / Appartements
+
+🚗 Voitures
+
+🍽️ Restaurants
+
+Afficher des recommandations personnalisées
+
+Intégrer un chatbot intelligent (service client / conseiller voyage)
+
+Gérer les profils utilisateurs
+
+Supporter les avis et évaluations
+
+Afficher des cartes interactives (Leaflet/Mapbox)
+
+3. Objectifs Non Fonctionnels
+Interface fluide et responsive
+
+Système sécurisé (authentification, données utilisateurs)
+
+Temps de réponse rapide (optimisation backend + frontend)
+
+Déploiement cloud scalable (Docker, CI/CD)
+
+Architecture modulaire pour extension future
+
+4. Technologies Utilisées
+
+Côté	Stack choisie
+Frontend	React.js + Tailwind CSS
+Backend	Django + Django REST Framework
+Recommandation ML	Python (scikit-learn, Surprise)
+Chatbot	Rasa (open-source)
+Base de Données	MongoDB Atlas (ou PostgreSQL local/cloud)
+Cartographie	Leaflet + OpenStreetMap
+Déploiement	Docker, GitHub Actions, Render/Railway
+5. Fonctionnalités détaillées
+🧭 Utilisateur
+Créer un compte / se connecter
+
+Chercher un service (hébergement, voiture, resto…)
+
+Réserver et payer (optionnel dans la 1re version)
+
+Consulter ses réservations
+
+Laisser des avis
+
+Recevoir des recommandations personnalisées
+
+Utiliser le chatbot pour poser des questions
+
+🛠️ Administrateur
+Gérer les annonces (ajout/modif/suppression)
+
+Gérer les utilisateurs
+
+Voir les statistiques de réservations
+
+Recevoir des feedbacks
+
+6. Design & UX/UI
+Design moderne et responsive
+
+Navigation simple et intuitive
+
+Couleurs chaudes (référence au Maroc)
+
+Composants cohérents et réutilisables
+
+Intégration chatbot fixe sur toutes les pages
+
+7. Livrables
+Code source complet du frontend & backend
+
+Modèles ML de recommandation
+
+Chatbot Rasa entraîné
+
+Base de données structurée
+
+Documentation technique + guide d'installation
+
+Déploiement sur serveur cloud
