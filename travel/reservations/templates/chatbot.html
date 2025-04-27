@@ -1,0 +1,100 @@
+<!-- Chatbot Section -->
+<section class="py-10 bg-gradient-to-r from-indigo-500 to-blue-600">
+                  <div class="container mx-auto px-4">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center mb-8">
+                      <h2 class="text-3xl font-extrabold text-white">Chat avec Nous</h2>
+                      <button class="text-white bg-indigo-600 p-2 rounded-full hover:bg-indigo-700 transition">
+                        <span class="material-icons">close</span>
+                      </button>
+                    </div>
+                
+                    <!-- Chat Interface -->
+                    <div class="bg-white rounded-lg shadow-lg max-w-lg mx-auto p-6 space-y-4">
+                      <!-- Chat Window -->
+                      <div id="chat-window" class="h-80 overflow-y-auto p-4 bg-gray-100 rounded-lg space-y-4">
+                        <!-- Messages -->
+                        <div class="message bot">
+                          <div class="flex items-start space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
+                              B
+                            </div>
+                            <div class="text-sm bg-indigo-100 p-3 rounded-lg text-gray-700">
+                              Bonjour, comment puis-je vous aider aujourd'hui ?
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End of Messages -->
+                      </div>
+                
+                      <!-- User Input -->
+                      <div class="flex items-center">
+                        <input type="text" id="user-input" class="input w-full p-3 rounded-lg border-2 border-gray-300 focus:ring-2 focus:ring-indigo-500" placeholder="Votre message ici..." />
+                        <button id="send-btn" class="bg-indigo-600 text-white p-3 rounded-full ml-2 hover:bg-indigo-700 transition">
+                          <span class="material-icons">send</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                
+                <!-- Script for Chatbot Logic -->
+                <script>
+                  const chatWindow = document.getElementById("chat-window");
+                  const userInput = document.getElementById("user-input");
+                  const sendBtn = document.getElementById("send-btn");
+                
+                  // Simulate a response from the bot
+                  const botReply = (message) => {
+                    setTimeout(() => {
+                      const botMessage = document.createElement("div");
+                      botMessage.classList.add("message", "bot");
+                      botMessage.innerHTML = `
+                        <div class="flex items-start space-x-2">
+                          <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
+                            B
+                          </div>
+                          <div class="text-sm bg-indigo-100 p-3 rounded-lg text-gray-700">
+                            ${message}
+                          </div>
+                        </div>
+                      `;
+                      chatWindow.appendChild(botMessage);
+                      chatWindow.scrollTop = chatWindow.scrollHeight;
+                    }, 1000);
+                  };
+                
+                  // Send user message
+                  const sendMessage = () => {
+                    const userMessage = userInput.value.trim();
+                    if (userMessage !== "") {
+                      const userMessageDiv = document.createElement("div");
+                      userMessageDiv.classList.add("message", "user");
+                      userMessageDiv.innerHTML = `
+                        <div class="flex items-start space-x-2 justify-end">
+                          <div class="text-sm bg-indigo-600 text-white p-3 rounded-lg">
+                            ${userMessage}
+                          </div>
+                          <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold">
+                            U
+                          </div>
+                        </div>
+                      `;
+                      chatWindow.appendChild(userMessageDiv);
+                      userInput.value = "";
+                      chatWindow.scrollTop = chatWindow.scrollHeight;
+                
+                      // Simulate a bot reply
+                      botReply("Merci pour votre message !");
+                    }
+                  };
+                
+                  // Trigger send message on Enter or button click
+                  sendBtn.addEventListener("click", sendMessage);
+                  userInput.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                      sendMessage();
+                    }
+                  });
+                </script>
+                

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Morocco</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50">
+        <div class="navbar bg-base-100 shadow-md px-4">
+            <div class="flex-1">
+                <a class="text-2xl font-bold text-primary">Travel Morocco</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1 hidden md:flex">
+                    <li><a>Accueil</a></li>
+                    <li><a href="hebergements.html">Hébergements</a></li>
+                    <li><a>Voitures</a></li>
+                    <li><a>Restaurants</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+                <!-- Menu Mobile -->
+                <div class="dropdown dropdown-end md:hidden">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Accueil</a></li>
+                        <li><a>Hébergements</a></li>
+                        <li><a>Voitures</a></li>
+                        <li><a>Restaurants</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+
+
+
+
+    
+
+
+
+   <!-- Navbar Fixée en bas -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-base-100 border-t border-gray-300 z-50">
+                  <div class="flex justify-around py-3">
+                    <a href="{% url 'home' %}" class="text-center text-lg font-semibold text-primary hover:text-primary-focus">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18M10 3l7 7-7 7"></path>
+                      </svg>
+                      Home
+                    </a>
+                
+                    <a href="" class="text-center text-lg font-semibold text-primary hover:text-primary-focus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-browser-safari h-6 w-6 mx-auto" viewBox="0 0 16 16">
+                                                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.25-14.75v1.5a.25.25 0 0 1-.5 0v-1.5a.25.25 0 0 1 .5 0m0 12v1.5a.25.25 0 1 1-.5 0v-1.5a.25.25 0 1 1 .5 0M4.5 1.938a.25.25 0 0 1 .342.091l.75 1.3a.25.25 0 0 1-.434.25l-.75-1.3a.25.25 0 0 1 .092-.341m6 10.392a.25.25 0 0 1 .341.092l.75 1.299a.25.25 0 1 1-.432.25l-.75-1.3a.25.25 0 0 1 .091-.34ZM2.28 4.408l1.298.75a.25.25 0 0 1-.25.434l-1.299-.75a.25.25 0 0 1 .25-.434Zm10.392 6 1.299.75a.25.25 0 1 1-.25.434l-1.3-.75a.25.25 0 0 1 .25-.434ZM1 8a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 0 .5h-1.5A.25.25 0 0 1 1 8m12 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 1 1 0 .5h-1.5A.25.25 0 0 1 13 8M2.03 11.159l1.298-.75a.25.25 0 0 1 .25.432l-1.299.75a.25.25 0 0 1-.25-.432Zm10.392-6 1.299-.75a.25.25 0 1 1 .25.433l-1.3.75a.25.25 0 0 1-.25-.434ZM4.5 14.061a.25.25 0 0 1-.092-.341l.75-1.3a.25.25 0 0 1 .434.25l-.75 1.3a.25.25 0 0 1-.342.091m6-10.392a.25.25 0 0 1-.091-.342l.75-1.299a.25.25 0 1 1 .432.25l-.75 1.3a.25.25 0 0 1-.341.09ZM6.494 1.415l.13.483a.25.25 0 1 1-.483.13l-.13-.483a.25.25 0 0 1 .483-.13M9.86 13.972l.13.483a.25.25 0 1 1-.483.13l-.13-.483a.25.25 0 0 1 .483-.13M3.05 3.05a.25.25 0 0 1 .354 0l.353.354a.25.25 0 0 1-.353.353l-.354-.353a.25.25 0 0 1 0-.354m9.193 9.193a.25.25 0 0 1 .353 0l.354.353a.25.25 0 1 1-.354.354l-.353-.354a.25.25 0 0 1 0-.353M1.545 6.01l.483.13a.25.25 0 1 1-.13.483l-.483-.13a.25.25 0 1 1 .13-.482Zm12.557 3.365.483.13a.25.25 0 1 1-.13.483l-.483-.13a.25.25 0 1 1 .13-.483m-12.863.436a.25.25 0 0 1 .176-.306l.483-.13a.25.25 0 1 1 .13.483l-.483.13a.25.25 0 0 1-.306-.177m12.557-3.365a.25.25 0 0 1 .176-.306l.483-.13a.25.25 0 1 1 .13.483l-.483.13a.25.25 0 0 1-.306-.177M3.045 12.944a.3.3 0 0 1-.029-.376l3.898-5.592a.3.3 0 0 1 .062-.062l5.602-3.884a.278.278 0 0 1 .392.392L9.086 9.024a.3.3 0 0 1-.062.062l-5.592 3.898a.3.3 0 0 1-.382-.034zm3.143 1.817a.25.25 0 0 1-.176-.306l.129-.483a.25.25 0 0 1 .483.13l-.13.483a.25.25 0 0 1-.306.176M9.553 2.204a.25.25 0 0 1-.177-.306l.13-.483a.25.25 0 1 1 .483.13l-.13.483a.25.25 0 0 1-.306.176"/>
+                                                    </svg>
+                      Recomm..
+                    </a>
+                
+                    <a href="" class="text-center text-lg font-semibold text-primary hover:text-primary-focus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-right-dots h-6 w-6 mx-auto" viewBox="0 0 16 16">
+                                                      <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                                      <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                                    </svg>
+                      Chatbot
+                    </a>
+                
+                    <a href="" class="text-center text-lg font-semibold text-primary hover:text-primary-focus">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4c3.313 0 6 2.687 6 6s-2.687 6-6 6-6-2.687-6-6 2.687-6 6-6zm0 10c4.418 0 8 3.582 8 8v2h-16v-2c0-4.418 3.582-8 8-8z"></path>
+                      </svg>
+                      Profile
+                    </a>
+                  </div>
+                </div>
+                
+
+    <!-- Footer -->
+    <footer class="bg-base-200 text-base-content p-10">
+        <div class="footer grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+                <h3 class="footer-title">Services</h3>
+                <a class="link link-hover">Hébergements</a>
+                <a class="link link-hover">Voitures</a>
+                <a class="link link-hover">Restaurants</a>
+            </div> 
+            <div>
+                <h3 class="footer-title">Société</h3>
+                <a class="link link-hover">À propos</a>
+                <a class="link link-hover">Contact</a>
+                <a class="link link-hover">Carrières</a>
+            </div> 
+            <div>
+                <h3 class="footer-title">Legal</h3>
+                <a class="link link-hover">Conditions</a>
+                <a class="link link-hover">Politique de confidentialité</a>
+                <a class="link link-hover">Cookies</a>
+            </div>
+            <div>
+                <h3 class="footer-title">Suivez-nous</h3>
+                <div class="flex gap-4 mt-2">
+                    <a><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6a10 10 0 01-2.9.8 5 5 0 002.2-2.7 10 10 0 01-3.2 1.2 5 5 0 00-8.5 4.6A14 14 0 013 3.1a5 5 0 001.5 6.7 5 5 0 01-2.3-.6v.1a5 5 0 004 5 5 5 0 01-2.3.1 5 5 0 004.7 3.5A10 10 0 012 19.5 14 14 0 009.7 22c8 0 12.3-6.6 12.3-12.3v-.6A9 9 0 0024 4.6z" /></svg></a>
+                    <a><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 3H2a1 1 0 00-1 1v16a1 1 0 001 1h20a1 1 0 001-1V4a1 1 0 00-1-1zm-6 17h-4v-6h-2v6H6V10h2v2h2v-2h2v2h2v-2h2v10zm4 0h-2v-6h2v6zm0-8h-2v-2h2v2z" /></svg></a>
+                    <a><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21.8 8.4a10.3 10.3 0 01-3 .8 5 5 0 002.2-2.7 10.3 10.3 0 01-3.2 1.2 5 5 0 00-8.5 4.6A14 14 0 013 3.1a5 5 0 001.5 6.7 5 5 0 01-2.3-.6v.1a5 5 0 004 5 5 5 0 01-2.3.1 5 5 0 004.7 3.5A10 10 0 012 19.5 14 14 0 009.7 22c8 0 12.3-6.6 12.3-12.3v-.6a9 9 0 002.8-6.7z" /></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-10 text-center">
+            <p>© 2025 Travel Morocco. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

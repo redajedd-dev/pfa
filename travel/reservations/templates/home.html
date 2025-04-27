@@ -1,43 +1,190 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Accueil</title>
+{% extends 'base.html' %}
 
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
-  <h1>Bienvenue sur la plateforme de réservation !</h1>
+{% block content %}
 
-  <div class="navbar bg-base-100 shadow-sm">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">daisyUI</a>
-    </div>
-    <div class="flex gap-2">
-      <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
+
+<!-- Section de recherche et filtrage -->
+<section class="py-10 bg-gradient-to-r from-indigo-500 to-blue-600">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-extrabold text-center text-white mb-6">Trouvez Votre Prochaine Aventure</h2>
+    
+    <!-- Formulaire de Recherche -->
+    <form action="" method="GET" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Type de Service (avec boutons radio modernes et design animé) -->
+      <div class="flex flex-col">
+        <label class="font-semibold text-white mb-2">Type de Service</label>
+        <div class="flex flex-wrap gap-4">
+          <label class="inline-flex items-center cursor-pointer transform transition-all duration-300 hover:scale-110">
+            <input type="radio" name="service_type" value="hebergement" class="radio radio-primary text-indigo-600 border-2 border-indigo-400 rounded-full" />
+            <span class="ml-2 text-white font-medium">Hébergements</span>
+          </label>
+          <label class="inline-flex items-center cursor-pointer transform transition-all duration-300 hover:scale-110">
+            <input type="radio" name="service_type" value="restaurant" class="radio radio-primary text-indigo-600 border-2 border-indigo-400 rounded-full" />
+            <span class="ml-2 text-white font-medium">Restaurants</span>
+          </label>
+          <label class="inline-flex items-center cursor-pointer transform transition-all duration-300 hover:scale-110">
+            <input type="radio" name="service_type" value="activites" class="radio radio-primary text-indigo-600 border-2 border-indigo-400 rounded-full" />
+            <span class="ml-2 text-white font-medium">Activités</span>
+          </label>
+          <label class="inline-flex items-center cursor-pointer transform transition-all duration-300 hover:scale-110">
+            <input type="radio" name="service_type" value="excursions" class="radio radio-primary text-indigo-600 border-2 border-indigo-400 rounded-full" />
+            <span class="ml-2 text-white font-medium">Excursions</span>
+          </label>
         </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-          <li>
-            <a class="justify-between">
-              Profile
-              <span class="badge">New</span>
-            </a>
-          </li>
-          <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
-        </ul>
+      </div>
+
+      <!-- Localisation (Champ avec icône) -->
+      <div class="flex flex-col">
+        <label for="location" class="font-semibold text-white mb-2">Localisation</label>
+        <div class="relative">
+          <input type="text" id="location" name="location" placeholder="Entrez une ville ou région" class="input input-bordered w-full p-3 pr-12 rounded-lg shadow-md focus:ring-2 focus:ring-indigo-500" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute top-1/2 left-3 transform -translate-y-1/2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5 5l5 5m-5-5h18m-18-8h18" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Budget (Avec bordure arrondie et ombre) -->
+      <div class="flex flex-col">
+        <label for="price_range" class="font-semibold text-white mb-2">Plage de Prix</label>
+        <select id="price_range" name="price_range" class="select select-bordered w-full p-3 rounded-lg shadow-md focus:ring-2 focus:ring-indigo-500">
+          <option value="">Tous les budgets</option>
+          <option value="low">Moins de 500 MAD</option>
+          <option value="medium">500 - 1500 MAD</option>
+          <option value="high">Plus de 1500 MAD</option>
+        </select>
+      </div>
+
+      <!-- Plage de dates (Date de début et de fin) avec effets modernes -->
+      <div class="flex flex-col">
+        <label for="start_date" class="font-semibold text-white mb-2">Date de début</label>
+        <input type="date" id="start_date" name="start_date" class="input input-bordered w-full p-3 rounded-lg shadow-md focus:ring-2 focus:ring-indigo-500" />
+
+        <label for="end_date" class="font-semibold text-white mt-4 mb-2">Date de fin</label>
+        <input type="date" id="end_date" name="end_date" class="input input-bordered w-full p-3 rounded-lg shadow-md focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <!-- Bouton de Recherche avec transition d'ombre -->
+      <div class="flex items-center justify-center">
+        <button type="submit" class="btn btn-primary w-full sm:w-auto mt-6 p-3 rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transform transition-all duration-300 hover:scale-105 shadow-lg">
+          Rechercher
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+<!-- Services Section -->
+<section class="py-20 bg-base-100">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4">Nos Services</h2>
+    <p class="text-gray-500">Tout pour rendre votre séjour exceptionnel.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-8">
+    
+    <!-- Hébergements -->
+    <div class="card bg-base-200 shadow-xl hover:scale-105 transition-transform duration-300">
+      <figure><img src="/static/img/hotel.jpg" alt="Hébergements" class="h-48 w-full object-cover rounded-t-xl" /></figure>
+      <div class="card-body">
+        <h3 class="card-title">Hébergements</h3>
+        <p>Des hôtels de charme aux riads authentiques, trouvez votre lieu parfait.</p>
+        <div class="card-actions justify-end">
+          <a class="btn btn-primary">Voir Plus</a>
+        </div>
       </div>
     </div>
+
+    <!-- Voitures -->
+    <div class="card bg-base-200 shadow-xl hover:scale-105 transition-transform duration-300">
+      <figure><img src="/static/img/voiture.jpg" alt="Voitures" class="h-48 w-full object-cover rounded-t-xl" /></figure>
+      <div class="card-body">
+        <h3 class="card-title">Location de Voitures</h3>
+        <p>Louez facilement une voiture fiable et adaptée à votre voyage.</p>
+        <div class="card-actions justify-end">
+          <a class="btn btn-primary">Voir Plus</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Restaurants -->
+    <div class="card bg-base-200 shadow-xl hover:scale-105 transition-transform duration-300">
+      <figure><img src="/static/img/restaurant.jpg" alt="Restaurants" class="h-48 w-full object-cover rounded-t-xl" /></figure>
+      <div class="card-body">
+        <h3 class="card-title">Restaurants</h3>
+        <p>Découvrez les meilleurs restaurants marocains traditionnels et modernes.</p>
+        <div class="card-actions justify-end">
+          <a class="btn btn-primary">Voir Plus</a>
+        </div>
+      </div>
+    </div>
+
   </div>
-</body>
-</html>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-base-200">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4">Avis Clients</h2>
+    <p class="text-gray-500">Ils parlent de nous !</p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-8 px-6">
+
+    <!-- Testimonial 1 -->
+    <div class="card w-80 bg-base-100 shadow-xl p-6">
+      <div class="flex flex-col items-center text-center">
+        <div class="avatar mb-4">
+          <div class="w-24 rounded-full">
+            <img src="/static/img/client1.jpg" />
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold">Sarah L.</h3>
+        <p class="mt-2">"Un voyage magique ! Service rapide et fiable, je recommande."</p>
+        <div class="rating mt-4">
+          <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="card w-80 bg-base-100 shadow-xl p-6">
+      <div class="flex flex-col items-center text-center">
+        <div class="avatar mb-4">
+          <div class="w-24 rounded-full">
+            <img src="/static/img/client2.jpg" />
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold">Omar R.</h3>
+        <p class="mt-2">"Très satisfait, hôtel magnifique et voiture neuve."</p>
+        <div class="rating mt-4">
+          <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+          <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+          <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 bg-gradient-to-r from-primary to-accent text-white text-center">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-6">Votre aventure commence ici</h2>
+    <p class="mb-6">Prêt à explorer le Maroc avec confort et style ? Réservez maintenant !</p>
+    <a class="btn btn-outline btn-lg">Réserver</a>
+  </div>
+</section>
+
+{% endblock %}
