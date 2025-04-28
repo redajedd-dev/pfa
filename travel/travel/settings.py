@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'reservations',
     'tailwind',
-    'core',
     'users',
-    'recommender',
     'chatbot',
 
 
@@ -67,7 +65,7 @@ ROOT_URLCONF = "travel.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -135,6 +133,4 @@ STATIC_URL = "static/"
 
 from decouple import config
 
-BOOKING_API_KEY = config('BOOKING_API_KEY')
-AIRBNB_API_KEY = config('AIRBNB_API_KEY')
-CAR_API_KEY = config('CAR_API_KEY')
+

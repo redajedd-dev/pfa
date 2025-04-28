@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Résultats de recherche</h2>
+
+    {% if results %}
+        <div class="row">
+            {% for result in results %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if result.image %}
+                            <img src="{{ result.image }}" class="card-img-top" alt="{{ result.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300x200?text=Aucune+Image" class="card-img-top" alt="Pas d'image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ result.name }}</h5>
+                            {% if result.description %}
+                                <p class="card-text">{{ result.description|truncatewords:20 }}</p>
+                            {% endif %}
+                            {% if result.price %}
+                                <p class="card-text"><strong>Prix:</strong> {{ result.price }}</p>
+                            {% endif %}
+                            {% if result.location %}
+                                <p class="card-text"><strong>Lieu:</strong> {{ result.location }}</p>
+                            {% endif %}
+                        </div>
+                        {% if result.url %}
+                        <div class="card-footer text-center">
+                            <a href="{{ result.url }}" class="btn btn-primary" target="_blank">Voir plus</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">Aucun résultat trouvé pour votre recherche.</p>
+    {% endif %}
+</div>
+{% endblock %}

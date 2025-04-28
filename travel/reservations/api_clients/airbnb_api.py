@@ -1,21 +1,22 @@
+# api_clients/airbnb_api.py
+
 import requests
 
-def get_airbnb_homes(city, checkin, checkout):
-    url = "https://api.airbnb.com/v2/search_results"
-    headers = {
-        "Authorization": "Bearer VOTRE_CLÉ_API_AIRBNB"
-    }
-    params = {
-        "location": city,
-        "check_in": checkin,
-        "check_out": checkout,
-        "guests": 2
-    }
-    response = requests.get(url, headers=headers, params=params)
-    return response.json()['search_results']
+def get_airbnb_locations(city, checkin_date, checkout_date, guests):
+    url = "https://airbnb13.p.rapidapi.com/search-location"
 
-def get_airbnb_homes_random():
-    return [
-        {"name": "Maison Berbère", "price": "70€", "image": "airbnb1.jpg"},
-        {"name": "Riad Marrakech", "price": "90€", "image": "airbnb2.jpg"},
-    ]
+    querystring = {
+        "location": city,
+        "checkin": checkin_date,
+        "checkout": checkout_date,
+        "adults": guests,
+        "currency": "MAD"
+    }
+
+    headers = {
+        "X-RapidAPI-Key": "TA_CLE_API",  # <<< Ta clé
+        "X-RapidAPI-Host": "airbnb13.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    return response.json()

@@ -1,54 +1,63 @@
-#from django.shortcuts import render
+from django.shortcuts import render
 
 # Create your views here.
 
-#def home(request):
-    #return render(request, 'home.html')
+def home_view(request):
+    return render(request, 'home.html')
 
 
-
-
-
+# reservations/views.py
 from django.shortcuts import render
 from .api_clients.booking_api import get_booking_hotels
-from .api_clients.airbnb_api import get_airbnb_homes
-from .api_clients.car_rental_api import get_cars
+from .api_clients.airbnb_api import get_airbnb_locations
+from .api_clients.car_rental_api import get_car_rentals
 
-def home(request):
-    hotels = get_booking_hotels_random()
-    homes = get_airbnb_homes_random()
-    cars = get_cars_random()
-    return render(request, 'home.html', {
-        'hotels': hotels,
-        'homes': homes,
-        'cars': cars
-    })
+def home_view(request):
+    return render(request, 'home.html')
 
-def search(request):
-    service = request.GET.get('service')
-    city = request.GET.get('city')
-    checkin = request.GET.get('checkin')
-    checkout = request.GET.get('checkout')
+def hotels_view(request):
+    return render(request, 'hotels.html')
 
-    if service == 'hotel':
-        results = get_booking_hotels(city, checkin, checkout)
-    elif service == 'airbnb':
-        results = get_airbnb_homes(city, checkin, checkout)
-    elif service == 'car':
-        results = get_cars(city, checkin, checkout)
-    else:
-        results = []
+def restaurants_view(request):
+    return render(request, 'restaurants.html')
 
-    return render(request, 'search.html', {
-        'results': results,
-        'service': service
-    })
+def activities_view(request):
+    return render(request, 'activities.html')
+
+def excursions_view(request):
+    return render(request, 'excursions.html')
+
+def admin_dashboard_view(request):
+    return render(request, 'dashboard_admin.html')
 
 def login_view(request):
     return render(request, 'login.html')
 
 def signup_view(request):
     return render(request, 'signup.html')
+
+def chatbot_view(request):
+    return render(request, 'chatbot.html')
+
+def search_view(request):
+    service_type = request.GET.get('service_type')
+    location = request.GET.get('location')
+    price_range = request.GET.get('price_range')
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    results = []
+
+    if service_type == 'hebergement':
+        results = get_booking_hotels(location, price_range, start_date, end_date)
+    elif service_type == 'restaurant':
+        results = get_airbnb_locations(location)
+    elif service_type in ['activites', 'excursions']:
+        results = get_airbnb_locations(location)
+
+    return render(request, 'search_results.html', {'results': results})
+
+
 
 
 

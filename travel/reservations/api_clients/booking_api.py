@@ -1,22 +1,24 @@
+# api_clients/booking_api.py
+
 import requests
 
-def get_booking_hotels(city, checkin, checkout):
-    url = "https://api.booking.com/v1/search"
-    headers = {
-        "Authorization": "Bearer VOTRE_CLÉ_API_BOOKING"
-    }
-    params = {
-        "city": city,
-        "checkin_date": checkin,
-        "checkout_date": checkout,
-        "adults_number": 2,
-    }
-    response = requests.get(url, headers=headers, params=params)
-    return response.json()['results']
+def get_booking_hotels(dest_id, checkin_date, checkout_date, adults_number):
+    url = "https://booking-com15.p.rapidapi.com/api/v1/cars/searchCarRentals"
 
-def get_booking_hotels_random():
-    # Simulation random (vraie API Booking à connecter)
-    return [
-        {"name": "Hotel Atlas", "price": "100€", "image": "hotel1.jpg"},
-        {"name": "Hotel Agadir", "price": "80€", "image": "hotel2.jpg"},
-    ]
+    querystring = {
+        "dest_id": dest_id,  # Exemple : -1456928 pour Marrakech
+        "dest_type": "city",
+        "checkin_date": checkin_date,
+        "checkout_date": checkout_date,
+        "adults_number": adults_number,
+        "locale": "fr",
+        "currency": "MAD"
+    }
+
+    headers = {
+        "X-RapidAPI-Key": "69d7d4ac30msh724c579890bd22dp1b949cjsnf88a42125a1a",  # <<< Remplacer par ta vraie clé RapidAPI
+        "X-RapidAPI-Host": "booking-com15.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    return response.json()
