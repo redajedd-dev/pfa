@@ -132,4 +132,9 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+from decouple import config
+
+BOOKING_API_KEY = config('BOOKING_API_KEY')
+AIRBNB_API_KEY = config('AIRBNB_API_KEY')
+CAR_API_KEY = config('CAR_API_KEY')
